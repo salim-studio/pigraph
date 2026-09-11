@@ -5,7 +5,7 @@
 ## تنصيب
 
 ```bash
-pip install -e .   # الحزمة تشمل pygraph ضمن pyproject.toml
+pip install -e .   # من جذر المستودع
 ```
 
 ## مثال سريع

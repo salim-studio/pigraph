@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pygraph"
+version = "0.2.0"
+description = "pygraph — langgraph-compatible agent graph library, faster (no pydantic, linear fast-path, parallel fan-out)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+keywords = ["langgraph", "agents", "graphs", "llm", "fast"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+all = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["pygraph*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

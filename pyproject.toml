@@ -3,21 +3,33 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pygraph"
-version = "0.2.0"
-description = "pygraph — langgraph-compatible agent graph library, faster (no pydantic, linear fast-path, parallel fan-out)"
+name = "pigraph"
+version = "0.3.0"
+description = "pigraph — fast LangGraph-compatible agent graphs + databases, ETL/data tools, ML/DL nodes, vector RAG store (zero hard deps)"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = "MIT"
+authors = [{ name = "salim-studio" }]
 dependencies = []
-keywords = ["langgraph", "agents", "graphs", "llm", "fast"]
+keywords = ["langgraph", "agents", "graphs", "llm", "database", "sqlite", "duckdb", "etl", "dataframe", "machine-learning", "deep-learning", "rag", "vector-store", "fast"]
+
+[project.urls]
+Homepage = "https://github.com/salim-studio/pigraph"
+Repository = "https://github.com/salim-studio/pigraph"
+Issues = "https://github.com/salim-studio/pigraph/issues"
+Documentation = "https://github.com/salim-studio/pigraph#readme"
+Changelog = "https://github.com/salim-studio/pigraph/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 test = ["pytest"]
-all = ["pytest"]
+db = ["pandas>=1.5", "sqlalchemy>=2.0", "duckdb>=0.8"]
+ml = ["scikit-learn>=1.0", "pandas>=1.5", "numpy>=1.24"]
+dl = ["numpy>=1.24"]
+viz = ["matplotlib>=3.5"]
+all = ["pytest", "pandas>=1.5", "sqlalchemy>=2.0", "duckdb>=0.8", "scikit-learn>=1.0", "numpy>=1.24", "matplotlib>=3.5"]
 
 [tool.setuptools.packages.find]
-include = ["pygraph*"]
+include = ["pigraph*", "pygraph*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

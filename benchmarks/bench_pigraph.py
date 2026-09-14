@@ -1,9 +1,10 @@
-"""مقارنة سرعة pygraph: (1) مقابل baseline ثقيل بأسلوب langgraph (deepcopy+تحقق كل خطوة)،
-(2) تسريع fan-out المتوازي، (3) langgraph مباشرة إن توفرت."""
+"""pigraph speed benchmark: (1) vs heavy langgraph-style baseline
+(deepcopy + history + validation each step), (2) parallel fan-out,
+(3) langgraph directly if installed."""
 import copy
 import time
 
-from pygraph import END, START, StateGraph
+from pigraph import END, START, StateGraph
 
 
 def build_chain(n=50):
@@ -16,7 +17,7 @@ def build_chain(n=50):
 
 
 def build_heavy_baseline(n=50):
-    """يحاكي سلوك langgraph: نسخ عميق + سجل تاريخ + تحقق مخطط بعد كل عقدة."""
+    """Mimics langgraph behavior: deepcopy + history + schema validation after each node."""
     nodes = [(lambda s: {"x": s.get("x", 0) + 1}) for _ in range(n)]
 
     def run(inputs):
@@ -46,13 +47,13 @@ def main():
     app.invoke({"x": 0}); heavy({"x": 0})
     t_fast = bench(app.invoke, 300)
     t_heavy = bench(heavy, 300)
-    print(f"pygraph  50-node x300: {t_fast:.3f}s  ({300*50/t_fast:,.0f} nodes/s)")
+    print(f"pigraph  50-node x300: {t_fast:.3f}s  ({300*50/t_fast:,.0f} nodes/s)")
     print(f"heavy-baseline (deepcopy+history+validate) x300: {t_heavy:.3f}s")
     print(f"speedup vs heavy baseline: {t_heavy/t_fast:.2f}x")
 
-    # fan-out متوازٍ مع I/O: 8 عمال × sleep(2ms) -> المتسلسل 16ms، المتوازي ~3ms
+    # Parallel fan-out with I/O: 8 workers x sleep(2ms) -> serial 16ms, parallel ~3ms
     import time as _t
-    import pygraph as _pg
+    import pigraph as _pg
     from typing import Annotated
     from typing import TypedDict
     class S(TypedDict, total=False):
@@ -71,7 +72,7 @@ def main():
     for _ in range(20):
         app2.invoke({})
     t_par = (time.perf_counter() - t0) / 20 * 1000
-    print(f"pygraph fan-out x8 (2ms I/O each): {t_par:.1f}ms/invoke متوازية (المتسلسل كان سيحتاج ~16ms)")
+    print(f"pigraph fan-out x8 (2ms I/O each): {t_par:.1f}ms/invoke parallel (serial would need ~16ms)")
 
     try:
         from langgraph.graph import StateGraph as LSG, START as LS, END as LE
@@ -87,9 +88,9 @@ def main():
             lapp.invoke({"x": 0})
         t_lg = time.perf_counter() - t0
         t_pg100 = bench(app.invoke, 100)
-        print(f"langgraph 50-node x100: {t_lg:.3f}s | pygraph: {t_pg100:.3f}s | speedup: {t_lg/t_pg100:.2f}x")
+        print(f"langgraph 50-node x100: {t_lg:.3f}s | pigraph: {t_pg100:.3f}s | speedup: {t_lg/t_pg100:.2f}x")
     except Exception as e:
-        print(f"(langgraph غير مثبت — تخطي المقارنة المباشرة: {e})")
+        print(f"(langgraph not installed — skipping direct comparison: {e})")
 
 
 if __name__ == "__main__":

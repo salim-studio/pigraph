@@ -64,7 +64,7 @@ class GraphInterrupt(Exception):
 
 
 # سياق الاستئناف: القيمة التي أعادها المستخدم عبر Command(resume=...)
-_resume_ctx: ContextVar = ContextVar("pygraph_resume", default=None)
+_resume_ctx: ContextVar = ContextVar("pigraph_resume", default=None)
 
 
 def interrupt(value=None) -> object:

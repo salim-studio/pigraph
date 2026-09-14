@@ -1,8 +1,8 @@
-"""اختبارات pygraph — توافق langgraph + سرعة."""
+"""pigraph tests — langgraph compatibility + speed."""
 import asyncio
 import time
 
-from pygraph import (END, START, Command, MemorySaver, MessageGraph, Send,
+from pigraph import (END, START, Command, MemorySaver, MessageGraph, Send,
                      SqliteSaver, StateGraph, StateSnapshot, ToolNode,
                      add_messages, create_react_agent, entrypoint, interrupt,
                      task, tools_condition)

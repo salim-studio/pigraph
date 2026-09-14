@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" role="img" aria-label="pigraph banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="0.55" stop-color="#131B3A"/>
+      <stop offset="1" stop-color="#0E2A3F"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#2A3560"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="500" fill="url(#bg)"/>
+  <rect width="1600" height="500" fill="url(#dots)" opacity="0.5"/>
+  <!-- mini graph mark -->
+  <g transform="translate(150,250)">
+    <g stroke="url(#accent)" stroke-width="7" stroke-linecap="round">
+      <line x1="0" y1="0" x2="-72" y2="-58"/>
+      <line x1="0" y1="0" x2="72" y2="-58"/>
+      <line x1="0" y1="0" x2="-72" y2="58"/>
+      <line x1="0" y1="0" x2="72" y2="58"/>
+    </g>
+    <g fill="#22D3EE" stroke="#fff" stroke-width="5">
+      <circle cx="-72" cy="-58" r="24"/>
+      <circle cx="72" cy="-58" r="24"/>
+      <circle cx="-72" cy="58" r="24"/>
+      <circle cx="72" cy="58" r="24"/>
+    </g>
+    <circle cx="0" cy="0" r="46" fill="#6366F1" stroke="#fff" stroke-width="7"/>
+    <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#fff">π</text>
+  </g>
+  <text x="310" y="225" font-family="Verdana, Arial, sans-serif" font-size="120" font-weight="bold" fill="#FFFFFF" letter-spacing="2">pigraph</text>
+  <text x="314" y="300" font-family="Verdana, Arial, sans-serif" font-size="38" fill="#A5B4FC">Fast agent graphs — from prototype to production</text>
+  <rect x="314" y="340" width="300" height="10" rx="5" fill="url(#accent)"/>
+  <text x="630" y="350" font-family="Verdana, Arial, sans-serif" font-size="26" fill="#67E8F9">agents • data • ML/DL • RAG</text>
+</svg>

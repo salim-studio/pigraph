@@ -19,8 +19,6 @@ LangGraph-compatible API (same names: <code>StateGraph</code>, <code>START</code
   <img src="https://img.shields.io/badge/deps-zero%20required-blueviolet" alt="Zero hard deps"/>
 </p>
 
-> **Renamed:** `pygraph` → **`pigraph`**. Old code keeps working via a compatibility alias (`import pygraph`), but new code should `import pigraph`. See [Migration](#migration-from-pygraph).
-
 ## Install
 
 ```bash
@@ -253,17 +251,6 @@ def api_node(state): ...
 python -m pytest tests/ -q
 python benchmarks/bench_pigraph.py
 ```
-
-## Migration from pygraph
-
-```python
-# before
-from pygraph import StateGraph
-# after
-from pigraph import StateGraph
-```
-
-`import pygraph` still works (it re-exports `pigraph` and emits a `DeprecationWarning`), so existing code doesn't break. But the package on PyPI and GitHub is now **`pigraph`**: https://github.com/salim-studio/pigraph
 
 ## Contributing
 

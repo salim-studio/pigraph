@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pigraph"
-version = "0.3.0"
+version = "0.3.1"
 description = "pigraph — fast LangGraph-compatible agent graphs + databases, ETL/data tools, ML/DL nodes, vector RAG store (zero hard deps)"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -29,7 +29,7 @@ viz = ["matplotlib>=3.5"]
 all = ["pytest", "pandas>=1.5", "sqlalchemy>=2.0", "duckdb>=0.8", "scikit-learn>=1.0", "numpy>=1.24", "matplotlib>=3.5"]
 
 [tool.setuptools.packages.find]
-include = ["pigraph*", "pygraph*"]
+include = ["pigraph*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

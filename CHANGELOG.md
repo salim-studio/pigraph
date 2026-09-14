@@ -3,6 +3,12 @@
 All notable changes to `pigraph` are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.3.1] - 2026-09-14
+### Changed
+- `pigraph` is now fully standalone: the `pygraph` compatibility alias was
+  removed. There is no dependency on, or fallback to, `pygraph` —
+  `import pigraph` is the only entry point.
+
 ## [0.3.0] - 2026-09-14
 ### Added
 - Renamed package `pygraph` → `pigraph` (with backward-compatible `pygraph` alias).
